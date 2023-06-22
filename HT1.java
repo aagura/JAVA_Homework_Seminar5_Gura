@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+
 public class HT1 {
 //     Реализуйте структуру телефонной книги с помощью HashMap.
 // Программа также должна учитывать, 
@@ -25,8 +26,17 @@ public class HT1 {
 // 1. Добавить контакт
 // 2. Вывести всех
 // 3. Выход
+    
     private static Map<String, ArrayList<String>> contacts = new HashMap<>();
-
+    public static void clrscr(){
+    //Clears Screen in java
+    try {
+        if (System.getProperty("os.name").contains("Windows"))
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        else
+            Runtime.getRuntime().exec("clear");
+    } catch (IOException | InterruptedException ex) {}
+}
     private static void addContact(Scanner scanner) {
         System.out.print("Введите фамилию: ");
         String lastName = scanner.nextLine();
@@ -66,7 +76,8 @@ public class HT1 {
                 });
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
+        clrscr();
         Scanner scanner = new Scanner(System.in, "cp866");
         int choice;
 
@@ -81,10 +92,18 @@ public class HT1 {
 
             switch (choice) {
                 case 1:
+                    clrscr();
                     addContact(scanner);
+                    System.out.println("Нажмите Enter");
+                    System.in.read();
+                    clrscr();
                     break;
                 case 2:
+                    clrscr();
                     displayContacts();
+                    System.out.println("Нажмите Enter");
+                    System.in.read();
+                    clrscr();
                     break;
                 case 3:
                     System.out.println("Программа завершена.");
